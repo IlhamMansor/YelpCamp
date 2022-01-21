@@ -14,10 +14,11 @@ module.exports.isLoggedIn = (req, res, next) => {
 module.exports.validateCampground = (req, res, next) => {
   const campgroundSchema = Joi.object({
     title: Joi.string().required(),
-    image: Joi.string().required(),
+    // image: Joi.string().required(),
     price: Joi.number().required().min(0),
     description: Joi.string().required(),
     location: Joi.string().required(),
+    deleteImages: Joi.array(),
   });
   const { error } = campgroundSchema.validate(req.body);
   if (error) {
